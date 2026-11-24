@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Der Assistent – Vaultcontor</title>
+<meta name="description" content="Der Assistent von Vaultcontor bereitet Antworten, Angebote und Rechnungen vor. Verbindlich wird nur, was du freigibst.">
+<meta name="theme-color" content="#09090a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Vaultcontor">
+<meta property="og:title" content="Der Assistent – Vaultcontor">
+<meta property="og:description" content="Der Assistent von Vaultcontor bereitet Antworten, Angebote und Rechnungen vor. Verbindlich wird nur, was du freigibst.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<!-- Icons: dieselben Zeichnungen wie im Dashboard (design/bento-standard/quelle/common.js) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v10.5a1 1 0 0 0 1 1H10v-6h4v6h3.5a1 1 0 0 0 1-1V9"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.4 3.3-5.5 6.5-5.5s5.9 2.1 6.5 5.5"/><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.9.8 3.1 2.6 3.5 5.2"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5.5 3.5h13v17l-2.6-1.6-2.6 1.6-2.6-1.6-2.6 1.6-2.6-1.6z"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3.5 13.5 6 5.5a1.5 1.5 0 0 1 1.4-1h9.2a1.5 1.5 0 0 1 1.4 1l2.5 8"/><path d="M3.5 13.5V18a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-4.5H16l-1.5 2.5h-5L8 13.5z"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M10 3.5l1.6 4.9 4.9 1.6-4.9 1.6L10 16.5l-1.6-4.9L3.5 10l4.9-1.6z"/><path d="M18 14.5l.8 2.2 2.2.8-2.2.8L18 20.5l-.8-2.2-2.2-.8 2.2-.8zM18 3l.5 1.5L20 5l-1.5.5L18 7l-.5-1.5L16 5l1.5-.5z"/></symbol>
+  <symbol id="i-fileSig" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5"/><path d="M8.5 16.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5-.5c.4.8 1 1.2 2 1"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5M9 13h6M9 16.5h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-chevR" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4.5-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.5 20 4 13.5 3.5 5.6A1.5 1.5 0 0 1 5 4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.5M12 17.3h.01"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H20m-3-3 3 3-3 3"/><path d="M20 13v1.5a3.5 3.5 0 0 1-3.5 3.5H4m3 3-3-3 3-3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 20h14"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-5 16-3.5-6.5z"/><path d="m11.5 13.5 3-3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.7-8.7M16.5 6.5l2.5 2.5M14 9l2 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5"/><path d="M14.5 6.5 17 4a4 4 0 0 1 3 3l-2.5 2.5"/></symbol>
+  <symbol id="i-roof" viewBox="0 0 24 24"><path d="M2.5 12 12 4.5l9.5 7.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M15.5 6.5V4h2v4"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8.5 20h7M12 16.5V20"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s6.5 7 6.5 11a6.5 6.5 0 0 1-13 0c0-4 6.5-11 6.5-11z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3.5 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-window" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M12 4v16M5 12h14"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M12 3 4.5 20.5 12 16.5l7.5 4z"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.5A6.5 6.5 0 1 0 17.5 17.5"/><path d="M4.5 10.5h9M4.5 13.5h9"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><path d="m3.5 6.5 1.2 1.2 2-2.2M3.5 12l1.2 1.2 2-2.2M3.5 17.5l1.2 1.2 2-2.2"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M4 10v4a1 1 0 0 0 1 1h2l8 4.5v-15L7 9H5a1 1 0 0 0-1 1z"/><path d="M18.5 9.5a3.5 3.5 0 0 1 0 5M8 15l1.5 5h2.5l-1-4.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></symbol>
+</svg>
+
+<!-- ============ Kopfzeile ============ -->
+<header class="top" id="top">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="Vaultcontor Startseite"><span class="logo"><svg class="ic"><use href="#i-home"/></svg></span>Vaultcontor</a>
+    <nav class="pnav" id="pnav" aria-label="Hauptmenü">
+      <a href="index.html">Home</a>
+      <a href="funktionen.html">Funktionen</a>
+      <a href="assistent.html" class="on" aria-current="page">Assistent</a>
+      <a href="sicherheit.html">Sicherheit</a>
+      <a href="pakete.html">Pakete</a>
+      <a href="fragen.html">Fragen</a>
+      <a href="demo.html" class="nav-demo">Demo anfragen</a>
+    </nav>
+    <a href="demo.html" class="btn lime cta">Demo anfragen</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="pnav"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main>
+<!-- ============ Assistent ============ -->
+<section class="sec page-top" id="assistent">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <span class="eyebrow">Der Assistent</span>
+      <h1>Er bereitet vor. <span>Du entscheidest.</span></h1>
+      <p>Kein Autopilot, der auf eigene Faust Mails verschickt. Der Assistent nimmt dir die Tipparbeit ab, verbindlich wird nur, was du bestätigst.</p>
+    </div>
+    <div class="flow3">
+      <div class="st rv"><span class="ict"><svg class="ic"><use href="#i-inbox"/></svg></span><h3>Anfrage kommt rein</h3><p>Per Mail, im Chat oder als Notiz vom Telefonat. In deinen Worten, ohne Formular.</p><span class="n">1</span></div>
+      <div class="st rv d1"><span class="ict calm"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>Entwurf liegt bereit</h3><p>Antwort, Termin, Angebot oder Rechnung, mit Preisen aus deinem Leistungskatalog.</p><span class="n">2</span></div>
+      <div class="st on rv d2"><span class="ict"><svg class="ic"><use href="#i-key"/></svg></span><h3>Du gibst frei</h3><p>Mit deinem Freigabe-Codewort oder der Authenticator-App. Erst dann wird gesendet oder festgeschrieben.</p><span class="n">3</span></div>
+    </div>
+    <div class="principle rv"><span class="ict calm"><svg class="ic"><use href="#i-shield"/></svg></span><div><b>Die KI hilft, entscheidet aber nie.</b><p>Beträge rechnet das Programm, nicht die KI. Mitarbeiter mit eingeschränkten Rechten bekommen auch über den Assistenten keine fremden Kundendaten.</p></div></div>
+  </div>
+</section>
+
+<!-- ============ Assistent: Beispiele ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <span class="eyebrow">So sieht das aus</span>
+      <h2>Im Chat und <span>im Postfach.</span></h2>
+    </div>
+    <div class="ex-grid">
+      <article class="f rv" data-tilt>
+        <div class="head lift"><span class="ict calm"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>Chat-Assistent</h3></div>
+        <p>Sag in deinen Worten, was zu tun ist. Der Assistent legt Entwürfe an und wartet auf dein Okay.</p>
+        <div class="vis lift chat">
+          <div class="bub me">Schreib Aigner eine Rechnung über 18 m Dachrinne, wie letzte Woche besprochen.</div>
+          <div class="bub ai">Entwurf für <b>Aigner, Josef</b> ist fertig: 18 lfm Dachrinne aus deiner Preisliste, Anfahrt Zone 2.
+            <div class="draft"><svg class="ic" style="width:18px;height:18px;color:var(--tx3)"><use href="#i-file"/></svg><span class="num">3.480,00 €</span><span class="sp"></span><span class="mini-btn"><svg class="ic" style="width:14px;height:14px"><use href="#i-key"/></svg>Freigeben</span></div>
+          </div>
+          <div class="bub ai" style="padding:10px 14px"><span class="typing"><i></i><i></i><i></i></span></div>
+        </div>
+      </article>
+
+      <article class="f rv d1" data-tilt>
+        <div class="head lift"><span class="ict calm"><svg class="ic"><use href="#i-inbox"/></svg></span><h3>Antwort-Assistent im Postfach</h3></div>
+        <p>Dein Postfach über IMAP und SMTP. Antworten liegen als Entwurf bereit, raus geht nichts ohne dich.</p>
+        <div class="vis lift">
+          <div class="mail"><div class="from"><i class="av" style="--hue:200;--s:26px">JK</i><b style="font-weight:600">Julia Krämer</b><small>08:14</small></div><p>Hallo, unser Carport-Dach ist undicht. Hätten Sie diese Woche Zeit für eine Besichtigung?</p></div>
+          <div class="mail reply"><div class="tag"><svg class="ic" style="width:14px;height:14px"><use href="#i-sparkles"/></svg>Entwurf · wartet auf Freigabe</div><p>Guten Tag Frau Krämer, gern. Donnerstag um 14:00 Uhr wäre bei uns frei …</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Assistent: Was er kann ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <span class="eyebrow">Was er kann</span>
+      <h2>Kennt deine Branche. <span>Hält sich an deine Regeln.</span></h2>
+    </div>
+    <div class="panel on rv">
+      <div class="pcard"><h3>Postfach und Assistent</h3><p>Der Assistent kennt deine Branche, deine Preise und dein Firmenwissen. Was er vorbereitet, wird erst verbindlich, wenn du es freigibst.</p>
+        <ul class="flist" style="margin-top:22px">
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Chat-Assistent</b><span>Legt Rechnungsentwürfe, Termine und Notizen an, plant Routen und beantwortet Fragen zu deinen Zahlen.</span></div></li>
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Antwort-Assistent im Postfach</b><span>Entwürfe für Anfragen, Rückfragen und Terminvorschläge.</span></div></li>
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Firmenwissen</b><span>Hinterlege, wie dein Betrieb arbeitet, und der Assistent hält sich daran.</span></div></li>
+        </ul>
+      </div>
+      <div class="pcard"><ul class="flist">
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Anbieter-Voreinstellungen</b><span>IONOS, Strato, Google, Microsoft Outlook, Apple iCloud, Nextcloud oder eigener Server. „Testen“ zeigt sofort, ob es klappt.</span></div></li>
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Schutz vor manipulierten Mails</b><span>Eine Mail kann dem Assistenten keine Befehle unterschieben: kein Versand, keine Freigabe, keine Datenausgabe.</span></div></li>
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Feste KI-Kosten</b><span>Jedes Paket enthält ein KI-Budget als harte Obergrenze. Du kannst es senken, nie wird es überschritten.</span></div></li>
+          <li><span class="ck"><svg class="ic"><use href="#i-check"/></svg></span><div><b>Werbung</b><span>Vorschläge für Werbeaktionen, passend zu Saison und Branche.</span></div></li>
+        </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Weiter ============ -->
+<section class="next-sec">
+  <div class="wrap next">
+    <a href="sicherheit.html" class="nx rv">
+      <div><small>Weiter</small><b>Sicherheit</b><p>Eigene Instanz je Firma, Freigabe mit Codewort und tägliche Sicherung.</p></div>
+      <span class="go-c"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+    <a href="demo.html" class="nx lime rv d1">
+      <div><small>20 Minuten, unverbindlich</small><b>Demo anfragen</b><p>Wir zeigen dir Vaultcontor an einer Musterfirma aus deiner Branche.</p></div>
+      <span class="go-c"><svg class="ic"><use href="#i-arrow"/></svg></span>
+    </a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="brand" style="font-size:16px"><span class="logo" style="width:30px;height:30px;border-radius:9px"><svg class="ic" style="width:17px;height:17px"><use href="#i-home"/></svg></span>Vaultcontor</a>
+    <span>© 2026</span>
+    <nav aria-label="Rechtliches">
+      <a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a><a href="#">Auftragsverarbeitung</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/main.js?v=5"></script>
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaultcontor – Das Dashboard für Handwerk und Dienstleister</title>
+<meta name="description" content="Rechnungen, Angebote, Termine, Postfach und Team in einem Dashboard, das deine Branche kennt. Der Assistent bereitet vor, du gibst frei.">
+<meta name="theme-color" content="#09090a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Vaultcontor">
+<meta property="og:title" content="Vaultcontor – Das Dashboard für Handwerk und Dienstleister">
+<meta property="og:description" content="Rechnungen, Angebote, Termine, Postfach und Team in einem Dashboard, das deine Branche kennt. Der Assistent bereitet vor, du gibst frei.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/inter-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=5">
+<script>document.documentElement.classList.add("js")</script>
+</head>
+<body>
+
+<!-- Icons: dieselben Zeichnungen wie im Dashboard (design/bento-standard/quelle/common.js) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7"/><path d="M5.5 9v10.5a1 1 0 0 0 1 1H10v-6h4v6h3.5a1 1 0 0 0 1-1V9"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 17.5h.01M12 17.5h.01"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.4 3.3-5.5 6.5-5.5s5.9 2.1 6.5 5.5"/><path d="M15.5 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c1.9.8 3.1 2.6 3.5 5.2"/></symbol>
+  <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M5.5 3.5h13v17l-2.6-1.6-2.6 1.6-2.6-1.6-2.6 1.6-2.6-1.6z"/><path d="M9 8.5h6M9 12h6M9 15.5h3.5"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M3.5 13.5 6 5.5a1.5 1.5 0 0 1 1.4-1h9.2a1.5 1.5 0 0 1 1.4 1l2.5 8"/><path d="M3.5 13.5V18a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2v-4.5H16l-1.5 2.5h-5L8 13.5z"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M10 3.5l1.6 4.9 4.9 1.6-4.9 1.6L10 16.5l-1.6-4.9L3.5 10l4.9-1.6z"/><path d="M18 14.5l.8 2.2 2.2.8-2.2.8L18 20.5l-.8-2.2-2.2-.8 2.2-.8zM18 3l.5 1.5L20 5l-1.5.5L18 7l-.5-1.5L16 5l1.5-.5z"/></symbol>
+  <symbol id="i-fileSig" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5"/><path d="M8.5 16.5c1-1.5 2-1.5 2.5 0s1.5 1.5 2.5-.5c.4.8 1 1.2 2 1"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3.5H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8.5z"/><path d="M14 3.5v5h5M9 13h6M9 16.5h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></symbol>
+  <symbol id="i-chevR" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.5 4.5-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2L20 15.5V19a1.5 1.5 0 0 1-1.6 1.5C10.5 20 4 13.5 3.5 5.6A1.5 1.5 0 0 1 5 4z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l10.5-6.5z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4 2.8 19.5h18.4z"/><path d="M12 10v4.5M12 17.3h.01"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"/></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H20m-3-3 3 3-3 3"/><path d="M20 13v1.5a3.5 3.5 0 0 1-3.5 3.5H4m3 3-3-3 3-3"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 20h14"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12 20 4l-5 16-3.5-6.5z"/><path d="m11.5 13.5 3-3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m10.8 12.2 8.7-8.7M16.5 6.5l2.5 2.5M14 9l2 2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.6-3 7.8-7 9-4-1.2-7-4.4-7-9V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+  <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5"/><path d="M14.5 6.5 17 4a4 4 0 0 1 3 3l-2.5 2.5"/></symbol>
+  <symbol id="i-roof" viewBox="0 0 24 24"><path d="M2.5 12 12 4.5l9.5 7.5"/><path d="M5 10.5V20h14v-9.5"/><path d="M15.5 6.5V4h2v4"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8.5 20h7M12 16.5V20"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2.5 4.5 13.5H12l-1 8 8.5-11H12z"/></symbol>
+  <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3.5s6.5 7 6.5 11a6.5 6.5 0 0 1-13 0c0-4 6.5-11 6.5-11z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3.5 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></symbol>
+  <symbol id="i-window" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="1.5"/><path d="M12 4v16M5 12h14"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="M12 3 4.5 20.5 12 16.5l7.5 4z"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17.5 6.5A6.5 6.5 0 1 0 17.5 17.5"/><path d="M4.5 10.5h9M4.5 13.5h9"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6.5h11M9 12h11M9 17.5h11"/><path d="m3.5 6.5 1.2 1.2 2-2.2M3.5 12l1.2 1.2 2-2.2M3.5 17.5l1.2 1.2 2-2.2"/></symbol>
+  <symbol id="i-megaphone" viewBox="0 0 24 24"><path d="M4 10v4a1 1 0 0 0 1 1h2l8 4.5v-15L7 9H5a1 1 0 0 0-1 1z"/><path d="M18.5 9.5a3.5 3.5 0 0 1 0 5M8 15l1.5 5h2.5l-1-4.5"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4"/></symbol>
+</svg>
+
+<!-- ============ Kopfzeile ============ -->
+<header class="top" id="top">
+  <div class="wrap">
+    <a href="index.html" class="brand" aria-label="Vaultcontor Startseite"><span class="logo"><svg class="ic"><use href="#i-home"/></svg></span>Vaultcontor</a>
+    <nav class="pnav" id="pnav" aria-label="Hauptmenü">
+      <a href="index.html" class="on" aria-current="page">Home</a>
+      <a href="funktionen.html">Funktionen</a>
+      <a href="assistent.html">Assistent</a>
+      <a href="sicherheit.html">Sicherheit</a>
+      <a href="pakete.html">Pakete</a>
+      <a href="fragen.html">Fragen</a>
+      <a href="#kontakt" class="nav-demo">Demo anfragen</a>
+    </nav>
+    <a href="#kontakt" class="btn lime cta">Demo anfragen</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="pnav"><svg class="ic"><use href="#i-menu"/></svg></button>
+  </div>
+</header>
+
+<main>
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="chip rv"><i></i>Für Handwerk und Dienstleister</span>
+      <h1 class="rv d1">Weniger Büro.<br><span>Mehr Betrieb.</span></h1>
+      <p class="lead rv d2">Rechnungen, Angebote, Termine, Postfach und Team in <b>einem Dashboard, das deine Branche kennt.</b> Der Assistent bereitet vor, du gibst frei.</p>
+      <div class="hero-cta rv d3">
+        <a href="pakete.html" class="btn lime">Pakete ansehen <svg class="ic go"><use href="#i-arrow"/></svg></a>
+        <a href="funktionen.html" class="btn">Alle Funktionen</a>
+      </div>
+      <div class="trust rv d3">
+        <span><svg class="ic"><use href="#i-shield"/></svg>Eigene Instanz je Firma</span>
+        <span><svg class="ic"><use href="#i-lock"/></svg>Server in Deutschland</span>
+        <span><svg class="ic"><use href="#i-receipt"/></svg>Pflichtangaben nach § 14 UStG geprüft</span>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <div class="halo"></div>
+      <canvas id="ring" aria-hidden="true"></canvas>
+      <div class="float f1" data-depth="40">
+        <span class="ict lime"><svg class="ic"><use href="#i-check"/></svg></span>
+        <span><b>RE-2026-0408 bezahlt</b><small>Becker, Andreas · 1.845,20 €</small></span>
+      </div>
+      <div class="float f2" data-depth="70">
+        <span class="ict calm"><svg class="ic"><use href="#i-sparkles"/></svg></span>
+        <span><b>Antwortentwurf bereit</b><small>Anfrage Flachdach · wartet auf Freigabe</small></span>
+      </div>
+      <div class="float f3" data-depth="55">
+        <span class="ict"><svg class="ic"><use href="#i-file"/></svg></span>
+        <span><b>Angebot angenommen</b><small>Brandl · als Rechnung übernehmen</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Produkt in 3D ============ -->
+<section class="showcase" aria-label="So sieht dein Dashboard aus">
+  <div class="wrap">
+    <div class="screen" id="screen">
+      <div class="screen-in" id="screenIn">
+        <div class="mk" id="mk" aria-hidden="true">
+          <div class="mk-bar">
+            <div class="brand"><span class="logo"><svg class="ic"><use href="#i-home"/></svg></span>Vaultcontor</div>
+            <div class="mk-nav"><span class="on">Übersicht</span><span>Kalender</span><span>Kunden</span><span>Rechnungen</span><span>Angebote</span><span>Postfach <i class="cnt">4</i></span><span>Assistent</span><span>Team &amp; Verträge</span></div>
+            <div class="mk-cmd"><svg class="ic" style="width:18px;height:18px"><use href="#i-search"/></svg><span>Suchen …</span><i class="kbd">⌘K</i></div>
+            <div class="mk-i"><svg class="ic"><use href="#i-bell"/></svg><i class="dot"></i></div>
+            <div class="av" style="--hue:330;--s:46px">AM</div>
+          </div>
+          <div class="mk-grid">
+            <div class="t lime" style="grid-column:1/6;grid-row:1/3">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="tl"><svg class="ic"><use href="#i-euro"/></svg>Umsatz Oktober</span>
+                <span class="chip-ink"><svg class="ic" style="width:14px;height:14px"><use href="#i-up"/></svg>9,3 %</span>
+              </div>
+              <div class="giant num" style="margin-top:22px">413.309<span class="unit">€</span></div>
+              <div style="font-size:15px;color:rgba(16,21,0,.68);margin-top:14px">Bester Monat seit Gründung · Ziel 400.000 € erreicht</div>
+              <div class="bars">
+                <i style="--h:40%"></i><i style="--h:48%"></i><i style="--h:55%"></i><i style="--h:30%"></i><i style="--h:46%"></i><i style="--h:66%"></i><i style="--h:80%"></i><i style="--h:89%"></i><i style="--h:95%"></i><i style="--h:92%"></i><i style="--h:84%"></i><i style="--h:100%"></i>
+              </div>
+              <div class="bars-l"><span>N</span><span>D</span><span>J</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span></div>
+            </div>
+            <div class="t glow" style="grid-column:6/9;grid-row:1">
+              <span class="tl"><svg class="ic"><use href="#i-alert"/></svg>Überfällig</span>
+              <div class="legend"><span><i style="background:var(--warn)"></i>Erinnerung</span><span><i style="background:#ff9f5a"></i>St. 1</span><span><i style="background:var(--bad)"></i>St. 2</span></div>
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto">
+                <div><div class="big num" style="color:var(--bad)">48,2<span class="unit">T€</span></div><div class="faint" style="font-size:14px;margin-top:6px">63 Posten</div></div>
+                <svg width="104" height="104" viewBox="0 0 42 42" style="transform:rotate(-90deg)"><circle cx="21" cy="21" r="16" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="4.5"/><circle cx="21" cy="21" r="16" fill="none" stroke="var(--warn)" stroke-width="4.5" stroke-dasharray="38 100.5" stroke-linecap="round"/><circle cx="21" cy="21" r="16" fill="none" stroke="#ff9f5a" stroke-width="4.5" stroke-dasharray="26 100.5" stroke-dashoffset="-41" stroke-linecap="round"/><circle cx="21" cy="21" r="16" fill="none" stroke="var(--bad)" stroke-width="4.5" stroke-dasharray="18 100.5" stroke-dashoffset="-70" stroke-linecap="round"/><circle cx="21" cy="21" r="16" fill="none" stroke="#e5484d" stroke-width="4.5" stroke-dasharray="8 100.5" stroke-dashoffset="-91" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+            <div class="t glow cg" style="grid-column:6/9;grid-row:2">
+              <span class="tl"><svg class="ic"><use href="#i-users"/></svg>Kunden</span>
+              <svg viewBox="0 0 300 80" preserveAspectRatio="none" style="width:100%;height:70px;margin-top:10px"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a39dff" stop-opacity=".35"/><stop offset="1" stop-color="#a39dff" stop-opacity="0"/></linearGradient></defs><path d="M0 70 C20 60 30 52 45 56 S70 62 85 50 105 40 120 46 140 48 160 36 185 22 205 28 230 26 250 14 280 6 300 2 V80 H0Z" fill="url(#g1)"/><path d="M0 70 C20 60 30 52 45 56 S70 62 85 50 105 40 120 46 140 48 160 36 185 22 205 28 230 26 250 14 280 6 300 2" fill="none" stroke="#a39dff" stroke-width="2.5"/></svg>
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-top:auto">
+                <div class="big num">1.980</div>
+                <div style="text-align:right;font-size:14px;color:var(--tx2)"><b style="color:var(--calm-tx);font-weight:600">+12</b> im Oktober<br>+148 seit Januar</div>
+              </div>
+            </div>
+            <div class="t" style="grid-column:9/13;grid-row:1/3">
+              <div style="display:flex;align-items:center;gap:10px"><b style="font-size:16px;font-weight:600">Heute</b><span class="faint" style="font-size:14px;white-space:nowrap">5 Termine · 4 Teams</span><span style="margin-left:auto;color:var(--lime);font-size:14px;font-weight:500;white-space:nowrap">Kalender ›</span></div>
+              <div class="today">
+                <div class="trow on"><div class="tt num">07:30<small>11:30</small></div><div><b>Dachsanierung Müller</b><em>Lechhausen · Team Weber</em></div><span class="sp"></span><span class="run">Läuft</span></div>
+                <div class="trow"><div class="tt num">09:00<small>10:00</small></div><div><b>Aufmaß Flachdach Wagner</b><em>Gersthofen · Lena Fischer</em></div></div>
+                <div class="trow"><div class="tt num">11:00<small>12:00</small></div><div><b>Angebotstermin Conrad</b><em>Bobingen · Jonas Weber</em></div></div>
+                <div class="trow"><div class="tt num">13:30<small>16:00</small></div><div><b>Kaminanschluss Brandl</b><em>Aichach · Team Yilmaz</em></div></div>
+                <div class="trow"><div class="tt num">15:30<small>16:30</small></div><div><b>Abnahme Bauer</b><em>Stadtbergen · Murat Yilmaz</em></div></div>
+              </div>
+            </div>
+            <div class="t" style="grid-column:1/6;grid-row:3">
+              <div style="display:flex;align-items:center;gap:10px"><b style="font-size:16px;font-weight:600">Einsatztage 2026</b><span class="faint" style="font-size:14px">Stunden pro Tag</span><span class="num" style="margin-left:auto;font-size:26px;font-weight:600;letter-spacing:-.03em">1.846 h</span></div>
+              <div class="heat" id="heatBig"></div>
+            </div>
+            <div class="t" style="grid-column:6/9;grid-row:3">
+              <div style="display:flex;align-items:center"><b style="font-size:16px;font-weight:600">Laufende Einsätze</b><span class="num" style="margin-left:auto;font-size:26px;font-weight:600">3</span></div>
+              <div style="margin-top:auto">
+                <div class="prow"><span>Dachsanierung Müller</span><b>72 %</b></div><div class="prog"><i style="width:72%"></i></div>
+                <div class="prow"><span>Kaminanschluss Brandl</span><b>35 %</b></div><div class="prog"><i style="width:35%"></i></div>
+              </div>
+            </div>
+            <div class="t" style="grid-column:9/13;grid-row:3">
+              <b style="font-size:16px;font-weight:600">Größte Posten</b>
+              <div style="margin-top:auto">
+                <div class="post"><i style="background:var(--calm)"></i><span>Wagner</span><span>12.340,00 €</span></div>
+                <div class="post"><i style="background:var(--warn)"></i><span>Baumann</span><span>8.915,40 €</span></div>
+                <div class="post"><i style="background:var(--bad)"></i><span>Keller</span><span>7.415,20 €</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Branchen ============ -->
+<section style="padding:70px 0 0">
+  <p class="mq-cap">Elf Branchenprofile mit passenden Begriffen, Preislisten und Fachwissen für den Assistenten</p>
+  <div class="marquee">
+    <div class="mq" id="mq">
+      <span><svg class="ic"><use href="#i-roof"/></svg>Dachdecker</span>
+      <span><svg class="ic"><use href="#i-layers"/></svg>Bau</span>
+      <span><svg class="ic"><use href="#i-window"/></svg>Schreiner</span>
+      <span><svg class="ic"><use href="#i-zap"/></svg>Elektro</span>
+      <span><svg class="ic"><use href="#i-drop"/></svg>Sanitär und Heizung</span>
+      <span><svg class="ic"><use href="#i-grid"/></svg>Maler</span>
+      <span><svg class="ic"><use href="#i-sun"/></svg>Garten</span>
+      <span><svg class="ic"><use href="#i-home"/></svg>Reinigung und Hausmeisterservice</span>
+      <span><svg class="ic"><use href="#i-monitor"/></svg>IT-Support</span>
+      <span><svg class="ic"><use href="#i-wrench"/></svg>Handwerk allgemein</span>
+      <span><svg class="ic"><use href="#i-users"/></svg>Dienstleistung allgemein</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Überblick ============ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-h rv">
+      <span class="eyebrow">Überblick</span>
+      <h2>Schau dich um. <span>Thema für Thema.</span></h2>
+      <p>Jeder Bereich hat seine eigene Seite. Such dir aus, womit du anfangen willst.</p>
+    </div>
+
+    <div class="bento">
+      <a href="funktionen.html" class="f s7 rv" data-tilt>
+        <div class="head lift"><span class="ict lime"><svg class="ic"><use href="#i-grid"/></svg></span><h3>Funktionen</h3></div>
+        <p>Vom ersten Anruf bis zur bezahlten Rechnung. Alles, was im Büro liegen bleibt, an einem Ort.</p>
+        <div class="tags lift"><span>Rechnungen</span><span>Angebote</span><span>Mahnwesen</span><span>Kalender</span><span>Postfach</span><span>Kundenakte</span><span>Team und Verträge</span><span>Handy-Ansicht</span></div>
+        <span class="more">Alle Funktionen <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+
+      <a href="assistent.html" class="f s5 rv d1" data-tilt>
+        <div class="head lift"><span class="ict calm"><svg class="ic"><use href="#i-sparkles"/></svg></span><h3>Der Assistent</h3></div>
+        <p>Er bereitet Antworten, Angebote und Rechnungen vor. Verbindlich wird nur, was du freigibst.</p>
+        <span class="more">So arbeitet er <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+
+      <a href="sicherheit.html" class="f s4 rv" data-tilt>
+        <div class="head lift"><span class="ict"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Sicherheit</h3></div>
+        <p>Eigene Instanz je Firma, Server in Deutschland, Freigabe mit Codewort und tägliche Sicherung.</p>
+        <span class="more">Mehr erfahren <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+
+      <a href="pakete.html" class="f lime s4 rv d1" data-tilt>
+        <div class="head lift"><span class="ict" style="background:var(--lime-ink);color:var(--lime)"><svg class="ic"><use href="#i-euro"/></svg></span><h3>Pakete</h3></div>
+        <p>Ein Preis, alles drin. Unterschiede nur bei Teamgröße, KI-Budget und Gestaltung.</p>
+        <div class="pfrom lift"><b>89 €</b><span>ab, pro Monat<br>zzgl. USt.</span></div>
+        <span class="more">Pakete vergleichen <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+
+      <a href="fragen.html" class="f s4 rv d2" data-tilt>
+        <div class="head lift"><span class="ict"><svg class="ic"><use href="#i-list"/></svg></span><h3>Fragen</h3></div>
+        <p>Technik, Datenschutz, Kalender, Kleinunternehmer und KI-Kosten: die häufigsten Fragen kurz beantwortet.</p>
+        <span class="more">Zu den Antworten <svg class="ic"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Demo anfragen ============ -->
+<section id="kontakt">
+  <div class="wrap final">
+    <div class="cta-tile rv">
+      <h2>Sieh es dir an, <span>bevor du entscheidest.</span></h2>
+      <p>Wir zeigen dir Vaultcontor an einer Musterfirma aus deiner Branche, mit echten Abläufen statt Folien. Dauert 20 Minuten.</p>
+      <div class="mini-bars"><i style="--h:40%"></i><i style="--h:48%"></i><i style="--h:55%"></i><i style="--h:30%"></i><i style="--h:46%"></i><i style="--h:66%"></i><i style="--h:80%"></i><i style="--h:89%"></i><i style="--h:95%"></i><i style="--h:92%"></i><i style="--h:84%"></i><i style="--h:100%"></i></div>
+    </div>
+    <form class="form rv d1" id="form" action="anfrage.php" method="post" novalidate>
+      <h3>Demo anfragen</h3>
+      <p class="sub">Wir melden uns innerhalb eines Werktags.</p>
+      <div class="two">
+        <div><label class="fl" for="f-name">Name</label><input class="inp" id="f-name" name="name" autocomplete="name" placeholder="Anna Meier" required></div>
+        <div><label class="fl" for="f-firma">Betrieb</label><input class="inp" id="f-firma" name="firma" autocomplete="organization" placeholder="Dach Meier GmbH" required></div>
+      </div>
+      <div><label class="fl" for="f-mail">E-Mail</label><input class="inp" id="f-mail" name="email" type="email" autocomplete="email" placeholder="anna@dachmeier.de" required></div>
+      <div class="two">
+        <div><label class="fl" for="f-branche">Branche</label>
+          <select class="inp" id="f-branche" name="branche">
+            <option>Dachdecker</option><option>Bau</option><option>Schreiner</option><option>Elektro</option><option>Sanitär und Heizung</option><option>Maler</option><option>Garten</option><option>Reinigung und Hausmeisterservice</option><option>IT-Support</option><option>Anderes Handwerk</option><option>Andere Dienstleistung</option>
+          </select></div>
+        <div><label class="fl" for="f-paket">Paket</label>
+          <select class="inp" id="f-paket" name="paket"><option>Noch unsicher</option><option>Start</option><option>Standard</option><option>Pro</option></select></div>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <p class="form-err" id="formErr" role="alert" hidden></p>
+      <button class="btn lime" type="submit">Demo anfragen <svg class="ic go"><use href="#i-arrow"/></svg></button>
+      <p class="legal"><svg class="ic"><use href="#i-shield"/></svg><span>Wir nutzen deine Angaben nur, um uns wegen der Demo zu melden. Details in der <a href="#" style="text-decoration:underline">Datenschutzerklärung</a>.</span></p>
+      <div class="done" aria-live="polite"><span class="logo"><svg class="ic"><use href="#i-check"/></svg></span><h3>Danke, ist angekommen.</h3><p class="muted" style="margin-top:8px">Wir melden uns innerhalb eines Werktags bei dir.</p></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="brand" style="font-size:16px"><span class="logo" style="width:30px;height:30px;border-radius:9px"><svg class="ic" style="width:17px;height:17px"><use href="#i-home"/></svg></span>Vaultcontor</a>
+    <span>© 2026</span>
+    <nav aria-label="Rechtliches">
+      <a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a><a href="#">Auftragsverarbeitung</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="assets/js/main.js?v=5"></script>
+</body>
+</html>
